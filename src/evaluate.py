@@ -250,7 +250,7 @@ def evaluate_model(results, dataset, y_pred_all, y_true_all, stats_graph_folder,
             continue
         conll_evaluation_script = os.path.join('.', 'conlleval')
         conll_output_filepath = '{0}_conll_evaluation.txt'.format(output_filepaths[dataset_type])
-        shell_command = 'perl {0} < {1} > {2}'.format(conll_evaluation_script, output_filepaths[dataset_type], conll_output_filepath)
+        shell_command = 'perl {0} -r < {1} > {2}'.format(conll_evaluation_script, output_filepaths[dataset_type], conll_output_filepath)
         print('shell_command: {0}'.format(shell_command))
         os.system(shell_command)
         conll_parsed_output = utils_nlp.get_parsed_conll_output(conll_output_filepath)
